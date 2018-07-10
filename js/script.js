@@ -5,7 +5,7 @@ var ciuntriesList = document.getElementById('countries');
 
 document.getElementById('search').addEventListener('click', searchCountries);
 
-function searchCountries {
+function searchCountries() {
     var countryName = document.getElementById('country-name').value;
     if (!countryName.length) countryName = 'Poland';
     fetch(url + countryName)
@@ -17,4 +17,9 @@ function searchCountries {
 
 function showCountriesList(resp) {
     countriesList.innerHTML = '';
+    resp.forEach(function(item) {
+        var liEl = document.createElement('li');
+        liEl.innerText = item.name;
+        countriesList.appendChild(liEl);
+    });
 }
